@@ -7,8 +7,8 @@ function Test-Admin {
     }
 }
 
+## Install tasty Chocolatey :D
 function Install-Choco {
-    ## Install tasty Chocolatey :D
     try {
         Set-ExecutionPolicy Bypass -Scope Process -Force
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
@@ -22,14 +22,14 @@ function Install-Choco {
 ## search in static Paths + Windows Registry
 function Find-Program {
     param ([string]$fileName)
-    # Suche in statischen Pfaden
+    # static paths
     $paths = Get-PSDrive -PSProvider FileSystem | ForEach-Object { $_.Root + "Program Files\", $_.Root + "Program Files (x86)\" }
     foreach ($path in $paths) {
         if (Get-ChildItem $path -Recurse -Filter $fileName -ErrorAction SilentlyContinue) {
             return $true
         }
     }
-    # Suche in der Windows Registry
+    # Windows Registry
     $regPaths = @("HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\", "HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\")
     foreach ($regPath in $regPaths) {
         $items = Get-ItemProperty "$regPath*" -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName -like "*$fileName*" }
