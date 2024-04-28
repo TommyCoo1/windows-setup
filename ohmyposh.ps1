@@ -1,7 +1,6 @@
-if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Warning "Need admin rights"
-    exit
-}
+. .\helpers.ps1
+Test-Admin
+Install-Choco
 
 # Install Windows Terminal and oh-my-posh
 try {
