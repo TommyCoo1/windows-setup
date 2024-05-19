@@ -1,3 +1,7 @@
+## allow script execution:
+## Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser 
+## or
+## Set-ExecutionPolicy -ExecutionPolicy RemoteSigned 
 . .\helpers.ps1
 Test-Admin
 Install-Choco
