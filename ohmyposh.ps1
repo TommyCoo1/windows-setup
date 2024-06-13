@@ -3,7 +3,7 @@ Test-Admin
 Install-Choco
 
 # Install Windows Terminal and oh-my-posh
-try {
+ try {
     choco install microsoft-windows-terminal -y
     winget install JanDeDobbeleer.OhMyPosh
 } catch {
@@ -12,7 +12,7 @@ try {
 }
 
 # Install + Font 
-oh-my-posh font install 'JetBrainsMono Nerd Font'
+oh-my-posh font install 'JetBrainsMono'# Nerd Font'
 $font = "JetBrainsMono NF"
 New-Item -ItemType Directory -Force -Path $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
 $settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
